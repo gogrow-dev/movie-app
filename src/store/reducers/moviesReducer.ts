@@ -2,10 +2,10 @@ import { createSlice, SliceCaseReducers } from '@reduxjs/toolkit';
 import {
   Category,
   getCategories,
+  getMovies,
+  type Movie,
   selectCategory,
 } from '../actions/moviesActions';
-
-export type Movie = {};
 
 type InitialState = {
   movies: Movie[];
@@ -13,10 +13,15 @@ type InitialState = {
   categorySelected: number | null;
 };
 
+const defaultCategories: Category[] = [
+  { id: -1, name: 'Popular' },
+  { id: -2, name: 'Top Rated' },
+];
+
 const initialState = {
   movies: [],
-  categories: [],
-  categorySelected: null,
+  categories: defaultCategories,
+  categorySelected: -1,
 };
 
 const moviesSlice = createSlice<
@@ -29,7 +34,7 @@ const moviesSlice = createSlice<
   reducers: {},
   extraReducers: builder => {
     builder.addCase(getCategories.fulfilled, (state, { payload }) => {
-      state.categories = payload.genres;
+      state.categories = [...defaultCategories, ...payload.genres];
     });
     builder.addCase(selectCategory, (state, { payload }) => {
       if (state.categorySelected === payload) {
@@ -37,6 +42,9 @@ const moviesSlice = createSlice<
         return;
       }
       state.categorySelected = payload;
+    });
+    builder.addCase(getMovies.fulfilled, (state, { payload }) => {
+      state.movies = payload.results;
     });
   },
 });

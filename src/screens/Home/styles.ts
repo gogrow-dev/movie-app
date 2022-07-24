@@ -3,6 +3,9 @@ import colors from '../../styles/colors';
 
 export default StyleSheet.create({
   container: {
+    flex: 1,
+  },
+  header: {
     padding: 29,
   },
   title: {
@@ -15,5 +18,9 @@ export default StyleSheet.create({
     fontSize: 18,
     color: colors.white,
     marginTop: 22,
+  },
+  list: {
+    marginTop: 29,
+    paddingHorizontal: 29,
   },
 });
