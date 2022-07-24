@@ -1,6 +1,6 @@
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { AxiosError } from 'axios';
-import camelCaseKeys from 'camelcase-keys';
+import camelCaseObject from 'camelcase-object-deep';
 import axios from '../../api/';
 
 export type Movie = {
@@ -8,6 +8,7 @@ export type Movie = {
   releaseDate: string;
   posterPath: string;
   voteAverage: number;
+  voteCount: number;
 };
 
 export type MovieResponse = {
@@ -32,11 +33,11 @@ export const getMovies = createAsyncThunk<MovieResponse, number | null>(
     try {
       if (categorySelected === -1) {
         const response = await axios.get('/movie/popular');
-        return camelCaseKeys(response.data, { deep: true });
+        return camelCaseObject(response.data);
       }
       if (categorySelected === -2) {
         const response = await axios.get('/movie/top_rated');
-        return camelCaseKeys(response.data, { deep: true });
+        return camelCaseObject(response.data);
       }
 
       const response = await axios.get('/movie/popular', {
@@ -44,7 +45,7 @@ export const getMovies = createAsyncThunk<MovieResponse, number | null>(
           with_genres: categorySelected,
         },
       });
-      return camelCaseKeys(response.data, { deep: true });
+      return camelCaseObject(response.data);
     } catch (err) {
       if (err instanceof AxiosError) {
         return rejectWithValue(err);

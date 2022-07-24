@@ -14,8 +14,9 @@ export default StyleSheet.create({
     borderRadius: 16,
   },
   content: {
+    flex: 1,
     justifyContent: 'space-between',
-    marginLeft: 22,
+    paddingHorizontal: 22,
   },
   heading: {
     fontFamily: 'Poppins-SemiBold',
@@ -27,4 +28,5 @@ export default StyleSheet.create({
     color: colors.white,
     fontSize: 12,
   },
+  iconsContainer: { width: 40, alignItems: 'center' },
 });

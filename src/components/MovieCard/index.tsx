@@ -3,6 +3,8 @@ import React from 'react';
 import { Movie } from '../../store/actions/moviesActions';
 import styles from './styles';
 import { IMAGE_BASE_URL } from '../../api';
+import Bookmark from '../Bookmark';
+import Star from '../Star';
 
 interface IMovieCard {
   item: Movie;
@@ -29,6 +31,10 @@ const MovieCard = ({ item }: IMovieCard) => {
           <Text style={styles.heading}>Average Rating:</Text>
           <Text style={styles.blurb}>{item.voteAverage}</Text>
         </View>
+      </View>
+      <View style={styles.iconsContainer}>
+        <Bookmark />
+        <Star popularity={item.voteCount} />
       </View>
     </View>
   );
