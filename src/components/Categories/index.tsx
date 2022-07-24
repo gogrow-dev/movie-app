@@ -1,22 +1,29 @@
 import { View, Text, FlatList } from 'react-native';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { Category, getCategories } from '../../store/actions/moviesActions';
+import { useDispatch, useSelector } from '../../store';
 import styles from './styles';
 import Item from './Item';
 
-const data = ['Top Rated', 'Popular', 'Action'];
-
 const Categories = () => {
+  const dispatch = useDispatch();
+  const categories = useSelector(state => state.movies.categories);
+
+  useEffect(() => {
+    dispatch(getCategories());
+  }, [dispatch]);
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Categories</Text>
-      <FlatList<string>
+      <FlatList<Category>
         showsHorizontalScrollIndicator={false}
         style={styles.list}
         contentContainerStyle={styles.listContent}
         horizontal
-        data={data}
-        keyExtractor={(_, index) => `category-${index}`}
-        renderItem={({ item }) => <Item name={item} />}
+        data={categories}
+        keyExtractor={item => `category-${item.id}`}
+        renderItem={({ item }) => <Item id={item.id} name={item.name} />}
       />
     </View>
   );

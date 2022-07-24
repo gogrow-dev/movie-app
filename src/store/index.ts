@@ -3,6 +3,11 @@ import { persistStore, persistReducer } from 'redux-persist';
 import storage from '@react-native-async-storage/async-storage';
 
 import rootReducers from './reducers';
+import {
+  TypedUseSelectorHook,
+  useDispatch as useReduxDispatch,
+  useSelector as useReduxSelector,
+} from 'react-redux';
 
 const persistConfig = {
   key: 'root',
@@ -23,5 +28,9 @@ const store = configureStore({
 const persistor = persistStore(store);
 
 export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
 
-export { store, persistor };
+const useDispatch = () => useReduxDispatch<AppDispatch>();
+const useSelector: TypedUseSelectorHook<RootState> = useReduxSelector;
+
+export { store, persistor, useDispatch, useSelector };
