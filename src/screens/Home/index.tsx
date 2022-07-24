@@ -2,10 +2,12 @@ import { FlatList, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import React, { useEffect } from 'react';
 import styles from './styles';
+import bookmarkIcon from '../../assets/icons/bookmark-black.png';
 import Categories from '../../components/Categories';
 import { useDispatch, useSelector } from '../../store';
 import { getMovies, type Movie } from '../../store/actions/moviesActions';
 import MovieCard from '../../components/MovieCard';
+import FloatingActionButton from '../../components/FloatingActionButton';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -25,8 +27,15 @@ const Home = () => {
       <Categories />
       <FlatList<Movie>
         style={styles.list}
+        contentContainerStyle={styles.contentList}
         data={movies}
         renderItem={({ item }) => <MovieCard item={item} />}
+      />
+      <FloatingActionButton
+        primary
+        position="right"
+        text="Watch List"
+        rightIcon={bookmarkIcon}
       />
     </SafeAreaView>
   );

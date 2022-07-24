@@ -23,4 +23,7 @@ export default StyleSheet.create({
     marginTop: 29,
     paddingHorizontal: 29,
   },
+  contentList: {
+    paddingBottom: 100,
+  },
 });
