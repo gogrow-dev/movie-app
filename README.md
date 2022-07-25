@@ -12,3 +12,5 @@ API_KEY=cfa9e531766dbc62c39e767373bd05c7
 
 - run ios: `yarn ios`
 - run android: `yarn android`
+
+## [Demo video](https://drive.google.com/file/d/1xOToF5PsApQo8eGkdpa3J0xkZciZ4_mp/view?usp=sharing)
