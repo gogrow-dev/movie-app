@@ -26,8 +26,9 @@ const WatchList = () => {
         <Text style={styles.subtitle}>Your Watch List</Text>
       </View>
       <FlatList<Movie>
+        showsVerticalScrollIndicator={false}
         style={styles.list}
-        keyExtractor={item => `watch-${item.id}`}
+        keyExtractor={item => item.id.toString()}
         contentContainerStyle={styles.contentList}
         data={watchList}
         renderItem={({ item }) => <MovieCard hideBookmark item={item} />}

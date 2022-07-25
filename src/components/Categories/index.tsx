@@ -22,7 +22,7 @@ const Categories = () => {
         contentContainerStyle={styles.listContent}
         horizontal
         data={categories}
-        keyExtractor={item => `category-${item.id}`}
+        keyExtractor={item => item.id.toString()}
         renderItem={({ item }) => <Item id={item.id} name={item.name} />}
       />
     </View>

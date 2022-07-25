@@ -38,11 +38,13 @@ const Home = () => {
       <Categories />
       <FlatList<Movie>
         ref={flatListRef}
-        keyExtractor={item => `movie-${item.id}`}
+        showsVerticalScrollIndicator={false}
+        keyExtractor={item => item.id.toString()}
         style={styles.list}
         contentContainerStyle={styles.contentList}
         data={movies}
         renderItem={({ item }) => <MovieCard item={item} />}
+        windowSize={21}
       />
       <FloatingActionButton
         primary
