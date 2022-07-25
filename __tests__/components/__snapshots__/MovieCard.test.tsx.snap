@@ -1,0 +1,195 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing MovieCard Create snapshot 1`] = `
+<View
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "opacity": 1,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+        "height": 120,
+        "marginBottom": 31,
+        "width": "100%",
+      }
+    }
+  >
+    <Image
+      resizeMode="contain"
+      source={
+        Object {
+          "uri": "https://image.tmdb.org/t/p/w300//path.png",
+        }
+      }
+      style={
+        Object {
+          "borderRadius": 16,
+          "height": 120,
+          "width": 95,
+        }
+      }
+    />
+    <View
+      style={
+        Object {
+          "flex": 1,
+          "justifyContent": "space-between",
+          "paddingHorizontal": 22,
+        }
+      }
+    >
+      <View>
+        <Text
+          style={
+            Object {
+              "color": "#EEEEEE",
+              "fontFamily": "Poppins-SemiBold",
+              "fontSize": 12,
+            }
+          }
+        >
+          Title:
+        </Text>
+        <Text
+          style={
+            Object {
+              "color": "#EEEEEE",
+              "fontFamily": "Poppins-Regular",
+              "fontSize": 12,
+            }
+          }
+        >
+          Title
+        </Text>
+      </View>
+      <View>
+        <Text
+          style={
+            Object {
+              "color": "#EEEEEE",
+              "fontFamily": "Poppins-SemiBold",
+              "fontSize": 12,
+            }
+          }
+        >
+          Release Date:
+        </Text>
+        <Text
+          style={
+            Object {
+              "color": "#EEEEEE",
+              "fontFamily": "Poppins-Regular",
+              "fontSize": 12,
+            }
+          }
+        >
+          2022-01-01
+        </Text>
+      </View>
+      <View>
+        <Text
+          style={
+            Object {
+              "color": "#EEEEEE",
+              "fontFamily": "Poppins-SemiBold",
+              "fontSize": 12,
+            }
+          }
+        >
+          Average Rating:
+        </Text>
+        <Text
+          style={
+            Object {
+              "color": "#EEEEEE",
+              "fontFamily": "Poppins-Regular",
+              "fontSize": 12,
+            }
+          }
+        >
+          8.1
+        </Text>
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "width": 40,
+        }
+      }
+    >
+      <Image
+        source={
+          Object {
+            "testUri": "../../../src/assets/icons/bookmark.png",
+          }
+        }
+        style={
+          Object {
+            "height": 24,
+            "width": 24,
+          }
+        }
+      />
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "justifyContent": "center",
+            },
+            Object {
+              "marginTop": 18,
+            },
+          ]
+        }
+      >
+        <Image
+          source={
+            Object {
+              "testUri": "../../../src/assets/icons/star-solid.png",
+            }
+          }
+          style={
+            Object {
+              "height": 24,
+              "width": 24,
+            }
+          }
+        />
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#EEEEEE",
+                "fontFamily": "Poppins-SemiBold",
+                "fontSize": 12,
+              },
+              Object {
+                "color": "#4FCCA3",
+              },
+            ]
+          }
+        >
+          1234
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;

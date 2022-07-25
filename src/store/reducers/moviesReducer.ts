@@ -40,10 +40,6 @@ const moviesSlice = createSlice<
       state.categories = [...defaultCategories, ...payload.genres];
     });
     builder.addCase(selectCategory, (state, { payload }) => {
-      if (state.categorySelected === payload) {
-        state.categorySelected = null;
-        return;
-      }
       state.categorySelected = payload;
     });
     builder.addCase(getMovies.fulfilled, (state, { payload }) => {

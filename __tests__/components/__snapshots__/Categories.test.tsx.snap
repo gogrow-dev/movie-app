@@ -1,0 +1,190 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing MovieCard Create snapshot 1`] = `
+<View
+  style={
+    Object {
+      "marginTop": 22,
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "color": "#EEEEEE",
+        "fontFamily": "Poppins-Bold",
+        "fontSize": 18,
+        "marginLeft": 29,
+      }
+    }
+  >
+    Categories
+  </Text>
+  <RCTScrollView
+    contentContainerStyle={
+      Object {
+        "paddingHorizontal": 29,
+      }
+    }
+    data={
+      Array [
+        Object {
+          "id": 1,
+          "name": "Category 1",
+        },
+        Object {
+          "id": 2,
+          "name": "Category 2",
+        },
+      ]
+    }
+    getItem={[Function]}
+    getItemCount={[Function]}
+    horizontal={true}
+    keyExtractor={[Function]}
+    onContentSizeChange={[Function]}
+    onLayout={[Function]}
+    onMomentumScrollBegin={[Function]}
+    onMomentumScrollEnd={[Function]}
+    onScroll={[Function]}
+    onScrollBeginDrag={[Function]}
+    onScrollEndDrag={[Function]}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={50}
+    showsHorizontalScrollIndicator={false}
+    stickyHeaderIndices={Array []}
+    style={
+      Object {
+        "marginTop": 18,
+      }
+    }
+    viewabilityConfigCallbackPairs={Array []}
+  >
+    <View>
+      <View
+        onLayout={[Function]}
+        style={
+          Array [
+            Object {
+              "flexDirection": "row",
+            },
+            null,
+          ]
+        }
+      >
+        <View
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "opacity": 1,
+            }
+          }
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "#3A3F47",
+                  "borderRadius": 16,
+                  "height": 32,
+                  "justifyContent": "center",
+                  "marginRight": 12,
+                  "paddingHorizontal": 22,
+                },
+                false,
+              ]
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#EEEEEE",
+                    "fontFamily": "Poppins-SemiBold",
+                    "fontSize": 16,
+                  },
+                  false,
+                ]
+              }
+            >
+              Category 1
+            </Text>
+          </View>
+        </View>
+      </View>
+      <View
+        onLayout={[Function]}
+        style={
+          Array [
+            Object {
+              "flexDirection": "row",
+            },
+            null,
+          ]
+        }
+      >
+        <View
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "opacity": 1,
+            }
+          }
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "#3A3F47",
+                  "borderRadius": 16,
+                  "height": 32,
+                  "justifyContent": "center",
+                  "marginRight": 12,
+                  "paddingHorizontal": 22,
+                },
+                false,
+              ]
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#EEEEEE",
+                    "fontFamily": "Poppins-SemiBold",
+                    "fontSize": 16,
+                  },
+                  false,
+                ]
+              }
+            >
+              Category 2
+            </Text>
+          </View>
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>
+</View>
+`;

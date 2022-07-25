@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { persistStore, persistReducer } from 'redux-persist';
+import { persistReducer } from 'redux-persist';
 import storage from '@react-native-async-storage/async-storage';
 
 import rootReducers from './reducers';
@@ -25,7 +25,6 @@ const store = configureStore({
     }),
   devTools: __DEV__,
 });
-const persistor = persistStore(store);
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
@@ -33,4 +32,4 @@ export type AppDispatch = typeof store.dispatch;
 const useDispatch = () => useReduxDispatch<AppDispatch>();
 const useSelector: TypedUseSelectorHook<RootState> = useReduxSelector;
 
-export { store, persistor, useDispatch, useSelector };
+export { store, useDispatch, useSelector };

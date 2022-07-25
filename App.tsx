@@ -1,8 +1,11 @@
 import React from 'react';
 import { Provider } from 'react-redux';
+import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
 import Navigation from './src/navigation';
-import { persistor, store } from './src/store/';
+import { store } from './src/store/';
+
+const persistor = persistStore(store);
 
 const App = () => {
   return (
