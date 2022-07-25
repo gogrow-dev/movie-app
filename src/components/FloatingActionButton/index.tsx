@@ -14,6 +14,7 @@ interface IFloatingActionButton {
   primary?: boolean;
   rightIcon?: ImageSourcePropType;
   leftIcon?: ImageSourcePropType;
+  onPress: () => void;
 }
 
 const FloatingActionButton = ({
@@ -22,12 +23,13 @@ const FloatingActionButton = ({
   primary,
   rightIcon,
   leftIcon,
+  onPress,
 }: IFloatingActionButton) => {
   const right = position === 'right';
   const addRightIconMargin = Boolean(rightIcon) && Boolean(text);
   const addLeftIconMargin = Boolean(leftIcon) && Boolean(text);
   return (
-    <TouchableOpacity activeOpacity={0.7}>
+    <TouchableOpacity activeOpacity={0.7} onPress={onPress}>
       <View
         style={[
           styles.container,

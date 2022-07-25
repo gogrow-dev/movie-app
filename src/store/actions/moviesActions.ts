@@ -9,6 +9,10 @@ export type Movie = {
   posterPath: string;
   voteAverage: number;
   voteCount: number;
+  backdropPath: string;
+  genreIds: number[];
+  overview: string;
+  popularity: number;
 };
 
 export type MovieResponse = {
