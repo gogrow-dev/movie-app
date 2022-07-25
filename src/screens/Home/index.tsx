@@ -5,17 +5,26 @@ import styles from './styles';
 import bookmarkIcon from '../../assets/icons/bookmark-black.png';
 import Categories from '../../components/Categories';
 import { useDispatch, useSelector } from '../../store';
-import { getMovies, type Movie } from '../../store/actions/moviesActions';
+import {
+  getMovies,
+  getWatchList,
+  type Movie,
+} from '../../store/actions/moviesActions';
 import MovieCard from '../../components/MovieCard';
 import FloatingActionButton from '../../components/FloatingActionButton';
+import { useNavigation } from '@react-navigation/native';
+import { NavigationProps } from '../../navigation';
 
 const Home = () => {
   const dispatch = useDispatch();
   const categorySelected = useSelector(state => state.movies.categorySelected);
   const movies = useSelector(state => state.movies.movies);
+  const { navigate } = useNavigation<NavigationProps>();
 
   useEffect(() => {
-    dispatch(getMovies(categorySelected));
+    dispatch(getMovies(categorySelected)).then(() => {
+      dispatch(getWatchList());
+    });
   }, [dispatch, categorySelected]);
 
   return (
@@ -26,6 +35,7 @@ const Home = () => {
       </View>
       <Categories />
       <FlatList<Movie>
+        keyExtractor={item => `movie-${item.id}`}
         style={styles.list}
         contentContainerStyle={styles.contentList}
         data={movies}
@@ -36,6 +46,7 @@ const Home = () => {
         position="right"
         text="Watch List"
         rightIcon={bookmarkIcon}
+        onPress={() => navigate('WatchList')}
       />
     </SafeAreaView>
   );

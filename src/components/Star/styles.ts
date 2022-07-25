@@ -5,6 +5,8 @@ export default StyleSheet.create({
   container: {
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  marginTop: {
     marginTop: 18,
   },
   text: {

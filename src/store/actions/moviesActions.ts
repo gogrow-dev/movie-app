@@ -1,9 +1,10 @@
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { AxiosError } from 'axios';
 import camelCaseObject from 'camelcase-object-deep';
-import axios from '../../api/';
+import axios, { ACCOUNT_ID } from '../../api/';
 
 export type Movie = {
+  id: number;
   title: string;
   releaseDate: string;
   posterPath: string;
@@ -13,6 +14,7 @@ export type Movie = {
   genreIds: number[];
   overview: string;
   popularity: number;
+  bookmark?: boolean;
 };
 
 export type MovieResponse = {
@@ -64,6 +66,40 @@ export const getCategories = createAsyncThunk<CategoriesResponse>(
     try {
       const response = await axios.get('/genre/movie/list');
       return response.data;
+    } catch (err) {
+      if (err instanceof AxiosError) {
+        return rejectWithValue(err);
+      }
+    }
+  },
+);
+
+export const addToWatchList = createAsyncThunk<MovieResponse, number>(
+  'movies/addToWatchList',
+  async (id, { rejectWithValue }) => {
+    try {
+      const response = await axios.post(`/account/${ACCOUNT_ID}/watchlist`, {
+        media_type: 'movie',
+        media_id: id,
+        watchlist: true,
+      });
+      return response.data;
+    } catch (err) {
+      if (err instanceof AxiosError) {
+        return rejectWithValue(err);
+      }
+    }
+  },
+);
+
+export const getWatchList = createAsyncThunk<MovieResponse>(
+  'movies/getWatchList',
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await axios.get(
+        `/account/${ACCOUNT_ID}/watchlist/movies`,
+      );
+      return camelCaseObject(response.data);
     } catch (err) {
       if (err instanceof AxiosError) {
         return rejectWithValue(err);

@@ -18,10 +18,11 @@ export type RootStackParamList = {
   WatchList: undefined;
 };
 
-export type MovieNavigationProps = NativeStackNavigationProp<
+export type NavigationProps = NativeStackNavigationProp<
   RootStackParamList,
-  'Movie'
+  'Movie' | 'WatchList'
 >;
+
 export type MovieRouteProps = RouteProp<RootStackParamList, 'Movie'>;
 
 const Stack = createNativeStackNavigator<RootStackParamList>();

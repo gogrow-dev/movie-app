@@ -4,26 +4,38 @@ import arrowIcon from '../../assets/icons/arrow-back.png';
 import bookmarkCheckIcon from '../../assets/icons/bookmark-check-black.png';
 import bookmarkIcon from '../../assets/icons/bookmark.png';
 import { IMAGE_BASE_URL } from '../../api';
-import { useSelector } from '../../store';
-import { categorySelector } from '../../store/selectors/movie';
+import { useDispatch, useSelector } from '../../store';
+import {
+  addedToWatchSelector,
+  categorySelector,
+} from '../../store/selectors/movie';
 import MovieCategory from '../../components/MovieCategory';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { MovieNavigationProps, MovieRouteProps } from '../../navigation';
+import { NavigationProps, MovieRouteProps } from '../../navigation';
 import AboutMovie from '../../components/AboutMovie';
 import FloatingActionButton from '../../components/FloatingActionButton';
 import styles from './styles';
+import {
+  addToWatchList,
+  getWatchList,
+} from '../../store/actions/moviesActions';
 
 const MovieDetail = () => {
-  const { goBack } = useNavigation<MovieNavigationProps>();
+  const { goBack } = useNavigation<NavigationProps>();
   const {
     params: { movie },
   } = useRoute<MovieRouteProps>();
+  const dispatch = useDispatch();
 
-  const { backdropPath, posterPath, genreIds } = movie;
+  const { id, backdropPath, posterPath, genreIds } = movie;
   const categories = useSelector(categorySelector(genreIds));
+  const addedToWatch = useSelector(addedToWatchSelector(id));
 
-  //TODO: [Juan] Implement
-  const isChecked = false;
+  const handleAddToWatch = () => {
+    dispatch(addToWatchList(movie.id)).then(() => {
+      dispatch(getWatchList());
+    });
+  };
 
   return (
     <View style={styles.container}>
@@ -54,10 +66,11 @@ const MovieDetail = () => {
         onPress={goBack}
       />
       <FloatingActionButton
+        disabled={addedToWatch}
         position="right"
-        onPress={() => {}}
-        primary={isChecked}
-        leftIcon={isChecked ? bookmarkCheckIcon : bookmarkIcon}
+        onPress={handleAddToWatch}
+        primary={addedToWatch}
+        leftIcon={addedToWatch ? bookmarkCheckIcon : bookmarkIcon}
       />
     </View>
   );

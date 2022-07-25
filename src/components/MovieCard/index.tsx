@@ -1,7 +1,7 @@
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { MovieNavigationProps } from '../../navigation';
+import { NavigationProps } from '../../navigation';
 import { Movie } from '../../store/actions/moviesActions';
 import styles from './styles';
 import { IMAGE_BASE_URL } from '../../api';
@@ -10,10 +10,11 @@ import Star from '../Star';
 
 interface IMovieCard {
   item: Movie;
+  hideBookmark?: boolean;
 }
 
-const MovieCard = ({ item }: IMovieCard) => {
-  const { navigate } = useNavigation<MovieNavigationProps>();
+const MovieCard = ({ item, hideBookmark = false }: IMovieCard) => {
+  const { navigate } = useNavigation<NavigationProps>();
   return (
     <TouchableOpacity onPress={() => navigate('Movie', { movie: item })}>
       <View style={styles.container}>
@@ -37,8 +38,8 @@ const MovieCard = ({ item }: IMovieCard) => {
           </View>
         </View>
         <View style={styles.iconsContainer}>
-          <Bookmark />
-          <Star popularity={item.voteCount} />
+          {!hideBookmark && <Bookmark checked={item.bookmark} />}
+          <Star addMargin={!hideBookmark} popularity={item.voteCount} />
         </View>
       </View>
     </TouchableOpacity>

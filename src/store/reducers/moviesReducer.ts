@@ -5,12 +5,14 @@ import {
   getMovies,
   type Movie,
   selectCategory,
+  getWatchList,
 } from '../actions/moviesActions';
 
 type InitialState = {
   movies: Movie[];
   categories: Category[];
   categorySelected: number | null;
+  watchList: Movie[];
 };
 
 const defaultCategories: Category[] = [
@@ -22,6 +24,7 @@ const initialState = {
   movies: [],
   categories: defaultCategories,
   categorySelected: -1,
+  watchList: [],
 };
 
 const moviesSlice = createSlice<
@@ -45,6 +48,16 @@ const moviesSlice = createSlice<
     });
     builder.addCase(getMovies.fulfilled, (state, { payload }) => {
       state.movies = payload.results;
+    });
+    builder.addCase(getWatchList.fulfilled, (state, { payload }) => {
+      state.watchList = payload.results;
+      state.movies = state.movies.map(movie => {
+        const bookmark = state.watchList.find(watch => watch.id === movie.id);
+        return {
+          ...movie,
+          bookmark: Boolean(bookmark),
+        };
+      });
     });
   },
 });

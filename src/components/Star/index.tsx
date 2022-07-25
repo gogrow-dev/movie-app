@@ -6,12 +6,13 @@ import styles from './styles';
 
 interface IStar {
   popularity: number;
+  addMargin: boolean;
 }
 
-const Star = ({ popularity }: IStar) => {
+const Star = ({ popularity, addMargin }: IStar) => {
   const isPopular = popularity > 0;
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, addMargin && styles.marginTop]}>
       {isPopular ? (
         <>
           <Image style={styles.icon} source={starSolid} />
